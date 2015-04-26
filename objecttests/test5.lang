@@ -19,11 +19,7 @@ class B extends A {
   }
 
   static function reduce(a, b) {
-    print(a);
-    print(b);
-    count = 0;
     while (a > 1 || a < -1) {
-      count = 0;
       try {
         a = divide(a, b);
         if (a == 2)
@@ -34,7 +30,6 @@ class B extends A {
       }
       finally {
         count = count + 1;
-	print(count);
       }
     }
     return a;
@@ -43,10 +38,14 @@ class B extends A {
 
 class C {
   static function main() {
-    var x = 0;
+    var x;
 
     try {
+      x = B.reduce(10, 5);
       x = x + B.reduce(81, 3);
+      x = x + B.reduce(5, 0);
+      x = x + B.reduce(-2, 0);
+      x = x + B.reduce(12, 4);
     }
     catch (a) {
       x = x * a;
